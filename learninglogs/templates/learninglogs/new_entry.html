@@ -1,0 +1,14 @@
+{% extends 'learninglogs/base.html' %}
+
+{% block content %}
+
+  <p><a href="{% url 'learninglogs:topic' topic.id %}">{{ topic }}</a></p> <!-- topic.id: the 'topic' variable is pulled from the
+                                                                                context sent with 'render' in the views.py file -->
+  <p>Add a new entry:</p>
+  <form action="{% url 'learninglogs:new_entry' topic.id %}" method='post'> <!-- this tells the form to return the data to the
+                                                                                  'learninglogs/new_entry' view using the POST method -->
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name='submit'>add entry</button>
+  </form>
+{% endblock content %}

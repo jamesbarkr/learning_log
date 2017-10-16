@@ -1,0 +1,14 @@
+{% extends "learninglogs/base.html" %}
+
+{% block content %}
+  <p>Add a new topic:</p>
+  <form action="{% url 'learninglogs:new_topic' %}" method='post'>
+    {% csrf_token %} <!-- a security measure used to prevent attackers
+                    from gaining unauthorized access -->
+    {{ form.as_p }} <!-- 'as_p' tells Django to display the form elements
+                    in paragraph format -->
+    <button name="submit">add topic</button> <!-- Django doesn't automatically create
+                    form submit buttons -->
+  </form>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'learninlogs/base.html' %} <!-- note that it is perfectly possible to extend from another app -->
+
+{% block content %}
+
+  {% if form.errors %}
+  <p>Your username and/or password didn't match, or don't exist. Please try again.</p>
+  {% endif %}
+
+  <form method="post" action="{% url 'users:login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button name="submit">log in</button>
+    <input type="hidden" name="next" value="{% url 'learninlogs:index' %}" />
+  </form>
+
+{% endblock content %}

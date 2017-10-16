@@ -1,0 +1,10 @@
+<p>
+  <a href="{% url 'learninglogs:index' %}">Learning Log</a> -
+  <a href="{% url 'learninglogs:topics' %}">Topics</a>
+  <!-- the brackets indicate a template tag, which is a code snippet that generates information
+  to be displayed on a page. In this case, 'url' points to the index urlpattern in the learninglogs/urls.py file.
+  ordinarily, the anchor tag is shaped like this: <a href="url_link">Text</a> -->
+</p>
+
+{% block content %}{% endblock content %}
+<!-- this is a placeholder; the child page will describe what goes in the block. -->

@@ -1,0 +1,20 @@
+{% extends 'learninglogs/base.html' %}
+
+{% block content %}
+
+  <p>Topics</p>
+
+  <ul> <!-- unordered list (bulleted list) -->
+    {% for topic in topics %} <!-- template tag equivalent of a for loop -->
+      <li>
+        <a href="{% url 'learninglogs:topic' topic.id %}">{{ topic }}</a> <!-- note the addition of topic.id; this
+                                                                          urlpattern requires a topic id argument -->
+      </li> <!-- <li></li> indicates a list item -->
+    {% empty %} <!-- basically an if statement; if there are no items on the list, display x -->
+      <li>No topics have been added yet.</li>
+    {% endfor %} <!-- template tag for loops must be explicitly ended, they do not rely on whitespace -->
+  </ul>
+
+  <a href="{% url 'learninglogs:new_topic' %}">Add a new topic</a>
+
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends 'learninglogs/base.html' %}
+
+{% block content %}
+
+<p>Topic: {{ topic }}</p>
+
+<p>Entries:</p>
+<p>
+  <a href="{% url 'learninglogs:new_entry' topic.id %}">Add a new entry</a>
+</p>
+<ul>
+  {% for entry in entries %}
+    <li>
+      <p> {{ entry.date_added|date:'M d, Y H:i' }} </p> <!-- displays dates in the format January 1, 2015 23:00 -->
+      <p> {{ entry.text|linebreaks }} <p/> <!-- ensures text readability for long entries -->
+      <p>
+        <a href="{% url 'learninglogs:edit_entry' entry.id %}">Edit entry</a>
+      </p>
+    </li>
+  {% empty %}
+    <li>
+      There are no entries for this topic (yet).
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock content %}
